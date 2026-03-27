@@ -1,0 +1,27 @@
+image: node:latest
+
+stages:
+  - build
+  - deploy
+
+
+build_site:
+  stage: build
+  script:
+    - echo "Preparando archivos del sistema de inventario..."
+    - mkdir public
+    - cp -r css js index.html dashboard.html productos.html DB public/
+  artifacts:
+    paths:
+      - public
+
+
+pages:
+  stage: deploy
+  script:
+    - echo "Desplegando a GitLab Pages..."
+  artifacts:
+    paths:
+      - public
+  only:
+    - master 
