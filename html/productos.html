@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos - Serviopción</title>
-    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="../css/estilo.css">
 </head>
 <body>
     <div class="contenedor-dashboard">
@@ -15,6 +15,9 @@
             <ul>
                 <li><a href="dashboard.html"> Dashboard</a></li>
                 <li><a href="productos.html" class="activo">Productos</a></li>
+                <li><a href="proveedores.html">Proveedores</a></li>
+                <li><a href="admin-usuarios.html" id="linkAdminUsuarios" style="display: none;">Admin Usuarios</a></li>
+                <li><a href="admin-logs.html" id="linkAdminLogs" style="display: none;">Admin Logs</a></li>
             </ul>
             
             <div class="info-usuario">
@@ -37,7 +40,7 @@
             <div class="contenedor-tabla">
                 <div class="barra-busqueda">
                     <input type="text" id="buscarProducto" placeholder=" Buscar producto...">
-                    <button class="btn-agregar" onclick="abrirModalAgregar()">
+                    <button id="btnAgregarProducto" class="btn-agregar" onclick="abrirModalAgregar()">
                         + Agregar Producto
                     </button>
                 </div>
@@ -47,9 +50,11 @@
                         <tr>
                             <th>Código</th>
                             <th>Producto</th>
+                            <th>Descripción</th>
                             <th>Categoría</th>
                             <th>Precio</th>
                             <th>Stock</th>
+                            <th>Stock Mínimo</th>
                             <th>Estado</th>
                             <th>Acciones</th>
                         </tr>
@@ -74,13 +79,19 @@
                 </div>
                 
                 <div class="campo">
-                    <label>Nombre:</label>
-                    <input type="text" id="nombre" required>
+                    <label>Producto:</label>
+                    <input type="text" id="producto" required>
+                </div>
+
+                <div class="campo">
+                    <label>Descripción:</label>
+                    <textarea id="descripcion" rows="3" maxlength="500" required></textarea>
                 </div>
                 
                 <div class="campo">
                     <label>Categoría:</label>
-                    <input type="text" id="categoria" required>
+                    <input type="text" id="categoria" list="listaCategorias" required>
+                    <datalist id="listaCategorias"></datalist>
                 </div>
                 
                 <div class="campo">
@@ -90,17 +101,21 @@
                 
                 <div class="campo">
                     <label>Stock Inicial:</label>
-                    <input type="number" id="stock" required>
+                    <input type="number" id="stock" min="0" required>
                 </div>
-                
+
                 <div class="campo">
                     <label>Stock Mínimo:</label>
-                    <input type="number" id="stockMinimo" required>
+                    <input type="number" id="stockMinimo" min="0" value="5" required>
                 </div>
                 
                 <div class="campo">
-                    <label>Descripción:</label>
-                    <input type="text" id="descripcion">
+                    <label>Estado:</label>
+                    <select id="estado" required>
+                        <option value="Disponible">Disponible</option>
+                        <option value="Stock Bajo">Stock Bajo</option>
+                        <option value="Sin Stock">Sin Stock</option>
+                    </select>
                 </div>
                 
                 <div class="botones-modal">
@@ -115,8 +130,7 @@
         </div>
     </div>
 
-    <script src="js/datos.js"></script>
-    <script src="js/productos.js"></script>
-    <script src="js/robot.js"></script>
+    <script src="../js/datos.js"></script>
+    <script src="../js/productos.js"></script>
 </body>
 </html>

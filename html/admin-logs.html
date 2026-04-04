@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Logs - Serviopción</title>
+    <link rel="stylesheet" href="../css/estilo.css">
+</head>
+<body>
+    <div class="contenedor-dashboard">
+        <div class="menu-lateral">
+            <h2> Serviopción</h2>
+
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="proveedores.html">Proveedores</a></li>
+                <li><a href="admin-usuarios.html">Admin Usuarios</a></li>
+                <li><a href="admin-logs.html" class="activo">Admin Logs</a></li>
+            </ul>
+
+            <div class="info-usuario">
+                <p><strong id="nombreUsuario">Usuario</strong></p>
+                <p id="rolUsuario">Rol</p>
+                <button onclick="cerrarSesion()" style="margin-top: 15px; background: #e74c3c;">
+                    Cerrar Sesión
+                </button>
+            </div>
+        </div>
+
+        <div class="contenido-principal">
+            <div class="cabecera">
+                <h1>Auditoría y Logs</h1>
+                <p>Visualiza actividades de usuarios, productos y movimientos de inventario</p>
+            </div>
+
+            <div class="contenedor-tabla bloque-formulario">
+                <div class="barra-busqueda barra-busqueda-filtros">
+                    <input type="date" id="filtroDesdeLog">
+                    <input type="date" id="filtroHastaLog">
+                    <input type="text" id="filtroTextoLog" placeholder="Buscar por usuario o acción">
+                    <input type="number" id="filtroLimiteLog" min="1" max="1000" value="200" placeholder="Límite">
+                    <button type="button" id="btnFiltrarLogs" class="btn-agregar">Filtrar</button>
+                    <button type="button" id="btnRespaldoBd" class="btn-editar">Respaldar BD</button>
+                </div>
+                <p id="mensajeRespaldoBd" class="mensaje-form"></p>
+            </div>
+
+            <div class="contenedor-tabla">
+                <h2 class="titulo-seccion">Historial de Auditoría</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Origen</th>
+                            <th>Usuario</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpoTablaLogs"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/datos.js"></script>
+    <script src="../js/admin-logs.js"></script>
+</body>
+</html>

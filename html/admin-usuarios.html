@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Usuarios - Serviopción</title>
+    <link rel="stylesheet" href="../css/estilo.css">
+</head>
+<body>
+    <div class="contenedor-dashboard">
+        <div class="menu-lateral">
+            <h2> Serviopción</h2>
+
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="proveedores.html">Proveedores</a></li>
+                <li><a href="admin-usuarios.html" class="activo">Admin Usuarios</a></li>
+                <li><a href="admin-logs.html">Admin Logs</a></li>
+            </ul>
+
+            <div class="info-usuario">
+                <p><strong id="nombreUsuario">Usuario</strong></p>
+                <p id="rolUsuario">Rol</p>
+                <button onclick="cerrarSesion()" style="margin-top: 15px; background: #e74c3c;">
+                    Cerrar Sesión
+                </button>
+            </div>
+        </div>
+
+        <div class="contenido-principal">
+            <div class="cabecera">
+                <h1>Administración de Usuarios</h1>
+                <p>Crear y editar usuarios internos del sistema</p>
+            </div>
+
+            <div class="contenedor-tabla bloque-formulario">
+                <h2 class="titulo-seccion">Crear Usuario</h2>
+                <form id="formCrearUsuario">
+                    <div class="campo">
+                        <label>Usuario:</label>
+                        <input type="text" id="usuarioNuevo" minlength="4" maxlength="100" required>
+                    </div>
+                    <div class="campo">
+                        <label>Contraseña:</label>
+                        <input type="password" id="contrasenaNueva" minlength="8" required>
+                    </div>
+                    <div class="campo">
+                        <label>Roles:</label>
+                        <div class="grupo-checks">
+                            <label class="item-check"><input type="checkbox" name="rolNuevo" value="Admin"><span>Admin</span></label>
+                            <label class="item-check"><input type="checkbox" name="rolNuevo" value="Vendedor"><span>Vendedor</span></label>
+                            <label class="item-check"><input type="checkbox" name="rolNuevo" value="Revisor"><span>Revisor</span></label>
+                            <label class="item-check"><input type="checkbox" name="rolNuevo" value="Cliente"><span>Cliente</span></label>
+                        </div>
+                    </div>
+                    <div class="botones-modal botones-inicio">
+                        <button type="submit" class="btn-agregar">Crear Usuario</button>
+                    </div>
+                    <p id="mensajeCrearUsuario" class="mensaje-form"></p>
+                </form>
+            </div>
+
+            <div class="contenedor-tabla bloque-formulario">
+                <h2 class="titulo-seccion">Editar Usuario</h2>
+                <form id="formEditarUsuario">
+                    <div class="campo">
+                        <label>Usuario a editar:</label>
+                        <select id="selectUsuarioEditar" required></select>
+                    </div>
+                    <div class="campo">
+                        <label>Nuevo nombre de usuario:</label>
+                        <input type="text" id="usuarioEditar" minlength="4" maxlength="100" required>
+                    </div>
+                    <div class="campo">
+                        <label>Nueva contraseña (opcional):</label>
+                        <input type="password" id="contrasenaEditar" minlength="8">
+                    </div>
+                    <div class="campo">
+                        <label>Roles:</label>
+                        <div class="grupo-checks">
+                            <label class="item-check"><input type="checkbox" name="rolEditar" value="Admin"><span>Admin</span></label>
+                            <label class="item-check"><input type="checkbox" name="rolEditar" value="Vendedor"><span>Vendedor</span></label>
+                            <label class="item-check"><input type="checkbox" name="rolEditar" value="Revisor"><span>Revisor</span></label>
+                            <label class="item-check"><input type="checkbox" name="rolEditar" value="Cliente"><span>Cliente</span></label>
+                        </div>
+                    </div>
+                    <div class="botones-modal botones-inicio">
+                        <button type="submit" class="btn-agregar">Guardar Cambios</button>
+                    </div>
+                    <p id="mensajeEditarUsuario" class="mensaje-form"></p>
+                </form>
+            </div>
+
+            <div class="contenedor-tabla">
+                <h2 class="titulo-seccion">Usuarios Registrados</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Usuario</th>
+                            <th>Roles</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpoTablaUsuarios"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/datos.js"></script>
+    <script src="../js/admin-usuarios.js"></script>
+</body>
+</html>

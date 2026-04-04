@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Serviopción</title>
-    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="../css/estilo.css">
 </head>
 <body>
     <div class="contenedor-dashboard">
@@ -14,7 +14,10 @@
             
             <ul>
                 <li><a href="dashboard.html" class="activo"> Dashboard</a></li>
-                <li><a href="productos.html"> Productos</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="proveedores.html">Proveedores</a></li>
+                <li><a href="admin-usuarios.html" id="linkAdminUsuarios" style="display: none;">Admin Usuarios</a></li>
+                <li><a href="admin-logs.html" id="linkAdminLogs" style="display: none;">Admin Logs</a></li>
             </ul>
             
             <div class="info-usuario">
@@ -72,11 +75,11 @@
                     </tbody>
                 </table>
             </div>
+
         </div>
     </div>
 
-    <script src="js/datos.js"></script>
-    <script src="js/dashboard.js"></script>
-    <script src="js/robot.js"></script>
+    <script src="../js/datos.js"></script>
+    <script src="../js/dashboard.js"></script>
 </body>
 </html>
