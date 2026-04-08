@@ -40,7 +40,7 @@
         localStorage.setItem(CLAVE_PASO, 'PRODUCTOS');
 
         usuarioInput.value = 'admin';
-        contraInput.value = 'admin123';
+        contraInput.value = 'Admin#2026';
 
         setTimeout(() => {
             formulario.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
@@ -64,12 +64,17 @@
         await sleep(800);
 
         await escribirLento('codigo', `AUTO-${Math.floor(Math.random() * 999)}`);
-        await escribirLento('nombre', 'Producto Automatizado');
+        await escribirLento('producto', 'Producto Automatizado');
+        await escribirLento('descripcion', 'Producto generado por automatización de pruebas');
         await escribirLento('categoria', 'Software');
         await escribirLento('precio', '1250000');
         await escribirLento('stock', '20');
         await escribirLento('stockMinimo', '5');
-        await escribirLento('descripcion', 'Generado automáticamente por el script maestro.');
+
+        const estado = document.getElementById('estado');
+        if (estado) {
+            estado.value = 'Disponible';
+        }
 
         const formulario = document.getElementById('formularioProducto');
         if (!formulario) {

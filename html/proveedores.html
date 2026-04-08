@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proveedores - Serviopción</title>
+    <link rel="stylesheet" href="../css/estilo.css">
+</head>
+<body>
+    <div class="contenedor-dashboard">
+        <div class="menu-lateral">
+            <h2> Serviopción</h2>
+
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="proveedores.html" class="activo">Proveedores</a></li>
+                <li><a href="admin-usuarios.html" id="linkAdminUsuarios" style="display: none;">Admin Usuarios</a></li>
+                <li><a href="admin-logs.html" id="linkAdminLogs" style="display: none;">Admin Logs</a></li>
+            </ul>
+
+            <div class="info-usuario">
+                <p><strong id="nombreUsuario">Usuario</strong></p>
+                <p id="rolUsuario">Rol</p>
+                <button onclick="cerrarSesion()" style="margin-top: 15px; background: #e74c3c;">
+                    Cerrar Sesión
+                </button>
+            </div>
+        </div>
+
+        <div class="contenido-principal">
+            <div class="cabecera">
+                <h1>Gestión de Proveedores</h1>
+                <p>Administra proveedores y su relación con productos</p>
+            </div>
+
+            <div class="contenedor-tabla bloque-formulario" id="seccionFormularioProveedor">
+                <h2 class="titulo-seccion">Crear / Editar Proveedor</h2>
+                <form id="formularioProveedor">
+                    <div class="campo">
+                        <label>Nombre:</label>
+                        <input type="text" id="nombreProveedor" required>
+                    </div>
+                    <div class="campo">
+                        <label>Contacto:</label>
+                        <input type="text" id="contactoProveedor">
+                    </div>
+                    <div class="campo">
+                        <label>Dirección:</label>
+                        <input type="text" id="direccionProveedor">
+                    </div>
+                    <div class="botones-modal botones-inicio">
+                        <button type="submit" class="btn-agregar">Guardar Proveedor</button>
+                        <button type="button" class="btn-cancelar" id="btnCancelarEdicionProveedor">Cancelar edición</button>
+                    </div>
+                    <p id="mensajeProveedor" class="mensaje-form"></p>
+                </form>
+            </div>
+
+            <div class="contenedor-tabla bloque-formulario" id="seccionRelacionProveedor">
+                <h2 class="titulo-seccion">Asignar Productos a Proveedor</h2>
+                <form id="formularioRelacionProveedor">
+                    <div class="campo">
+                        <label>Proveedor:</label>
+                        <select id="selectProveedorRelacion" required></select>
+                    </div>
+                    <div class="campo">
+                        <label>Productos (Ctrl/Cmd + clic para múltiple selección):</label>
+                        <select id="selectProductosRelacion" multiple size="8" required></select>
+                    </div>
+                    <div class="botones-modal botones-inicio">
+                        <button type="submit" class="btn-agregar">Guardar Relación</button>
+                    </div>
+                    <p id="mensajeRelacionProveedor" class="mensaje-form"></p>
+                </form>
+            </div>
+
+            <div class="contenedor-tabla">
+                <h2 class="titulo-seccion">Listado de Proveedores</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Contacto</th>
+                            <th>Dirección</th>
+                            <th># Productos</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpoTablaProveedores"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/datos.js"></script>
+    <script src="../js/proveedores.js"></script>
+</body>
+</html>

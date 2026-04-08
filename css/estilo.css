@@ -52,14 +52,14 @@ body {
     margin-bottom: 20px;
 }
 
-.campo label {
+.tarjeta-login .campo label {
     display: block;
     margin-bottom: 8px;
     color: #34495e;
     font-weight: 600;
 }
 
-.campo input {
+.tarjeta-login .campo input {
     width: 100%;
     padding: 12px;
     border: 2px solid #dfe6e9;
@@ -68,12 +68,12 @@ body {
     transition: border-color 0.3s;
 }
 
-.campo input:focus {
+.tarjeta-login .campo input:focus {
     outline: none;
     border-color: #667eea;
 }
 
-button[type="submit"] {
+.tarjeta-login button[type="submit"] {
     width: 100%;
     padding: 12px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -86,7 +86,7 @@ button[type="submit"] {
     transition: transform 0.2s;
 }
 
-button[type="submit"]:hover {
+.tarjeta-login button[type="submit"]:hover {
     transform: translateY(-2px);
 }
 
@@ -448,6 +448,172 @@ td {
 }
 
 /* ============================================
+   FORMULARIOS Y CONTROLES
+   ============================================ */
+
+.campo input,
+.campo select,
+.campo textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #dfe6e9;
+    border-radius: 6px;
+    font-size: 15px;
+    color: #2c3e50;
+    background-color: #fff;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.14);
+}
+
+.campo select[multiple] {
+    min-height: 170px;
+    padding: 8px;
+}
+
+.campo input[type="checkbox"],
+.campo input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    accent-color: #3498db;
+    cursor: pointer;
+}
+
+.bloque-formulario {
+    margin-bottom: 24px;
+}
+
+.titulo-seccion {
+    margin-bottom: 16px;
+}
+
+.botones-inicio {
+    justify-content: flex-start;
+}
+
+.mensaje-form {
+    margin-top: 10px;
+    color: #2c3e50;
+    font-size: 14px;
+    min-height: 20px;
+}
+
+.grupo-checks {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.item-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border: 1px solid #dfe6e9;
+    border-radius: 8px;
+    background-color: #f8f9fb;
+    color: #34495e;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.item-check:hover {
+    background-color: #eef5ff;
+    border-color: #3498db;
+}
+
+.barra-busqueda-filtros {
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.barra-busqueda-filtros input {
+    min-width: 120px;
+}
+
+.barra-busqueda-filtros input[type="text"] {
+    min-width: 220px;
+}
+
+/* ============================================
+   PORTAL CLIENTE
+   ============================================ */
+
+.catalogo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+}
+
+.tarjeta-catalogo {
+    border: 1px solid #e3e8ef;
+    border-radius: 10px;
+    padding: 16px;
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.tarjeta-catalogo-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.tarjeta-catalogo-header h3 {
+    font-size: 18px;
+    color: #2c3e50;
+}
+
+.tarjeta-catalogo-codigo {
+    font-size: 13px;
+    color: #64748b;
+    margin-bottom: 10px;
+}
+
+.tarjeta-catalogo-descripcion {
+    font-size: 14px;
+    color: #475569;
+    min-height: 42px;
+    margin-bottom: 12px;
+}
+
+.tarjeta-catalogo-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.tag-categoria {
+    display: inline-block;
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    background: #eaf2ff;
+    color: #1d4ed8;
+}
+
+.catalogo-vacio {
+    border: 1px dashed #cfd8e3;
+    border-radius: 10px;
+    padding: 22px;
+    text-align: center;
+    color: #64748b;
+}
+
+/* ============================================
    RESPONSIVE
    ============================================ */
 
@@ -466,6 +632,10 @@ td {
     
     .barra-busqueda {
         flex-direction: column;
+    }
+
+    .catalogo-grid {
+        grid-template-columns: 1fr;
     }
     
     table {

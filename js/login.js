@@ -2,10 +2,21 @@
    LÓGICA DE LA PÁGINA DE LOGIN
    ============================================ */
 
-// Si ya hay sesión activa, ir al dashboard
-if (BaseDatos.tieneSesion()) {
-    window.location.href = 'dashboard.html';
+function obtenerRutaPrincipal() {
+    return '/html/dashboard.html';
 }
+
+// Si ya hay sesión activa, ir al dashboard
+(async function verificarSesion() {
+    try {
+        const sesion = await BaseDatos.obtenerSesion();
+        if (sesion) {
+            window.location.href = obtenerRutaPrincipal();
+        }
+    } catch (error) {
+        console.error('No se pudo verificar la sesión:', error.message);
+    }
+})();
 
 // Obtener elementos del formulario
 const formulario = document.getElementById('formularioLogin');
@@ -14,7 +25,7 @@ const inputContrasena = document.getElementById('contrasena');
 const mensajeError = document.getElementById('mensajeError');
 
 // Cuando se envía el formulario
-formulario.addEventListener('submit', function(evento) {
+formulario.addEventListener('submit', async function(evento) {
     evento.preventDefault(); // Evitar que se recargue la página
     
     // Obtener valores
@@ -27,14 +38,12 @@ formulario.addEventListener('submit', function(evento) {
         return;
     }
     
-    // Intentar iniciar sesión
-    if (BaseDatos.login(usuario, contrasena)) {
-        // Login exitoso - ir al dashboard
-        window.location.href = 'dashboard.html';
-    } else {
-        // Login fallido - mostrar error
-        mostrarError('Usuario o contraseña incorrectos');
-        inputContrasena.value = ''; // Limpiar contraseña
+    try {
+        await BaseDatos.login(usuario, contrasena);
+        window.location.href = obtenerRutaPrincipal();
+    } catch (error) {
+        mostrarError(error.message || 'Usuario o contraseña incorrectos');
+        inputContrasena.value = '';
     }
 });
 
