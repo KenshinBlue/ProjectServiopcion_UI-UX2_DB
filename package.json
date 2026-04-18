@@ -6,15 +6,18 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
-    "hash": "node scripts/generarHash.js"
+    "hash": "node scripts/generarHash.js",
+    "test:automation": "node tests/automation.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "chromedriver": "^147.0.1",
     "dotenv": "^16.4.5",
     "express": "^4.21.2",
     "express-session": "^1.18.1",
-    "mysql2": "^3.11.3",
-    "selenium-webdriver": "^4.41.0"
+    "mysql2": "^3.11.3"
+  },
+  "devDependencies": {
+    "chromedriver": "^136.0.0",
+    "selenium-webdriver": "^4.27.0"
   }
 }
